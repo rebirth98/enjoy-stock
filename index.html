@@ -798,11 +798,11 @@ a:hover{color:var(--fg)}
 // ============================================================
 // API CONFIG — 后端数据代理
 // ============================================================
-// 自动适配：本地开发用 localhost，Vercel 部署用同域 /api
-const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-  ? 'http://localhost:8899'
-  : '';
-const API_ONLINE = true;
+// 自动适配环境
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE = isLocal ? 'http://localhost:8899' : '';
+// 线上环境用模拟数据，本地连真实API
+const API_ONLINE = isLocal;
 
 async function apiGet(path) {
   if (!API_ONLINE) return null;
