@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+stock_index.json
+em_raw.json
+bg_4k.jpg
+*.output
